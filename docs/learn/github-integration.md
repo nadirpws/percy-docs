@@ -1,8 +1,6 @@
-# GitHub integration
+# GitHub App
 
-If you enable the Github integration in your organization, Percy automatically integrates with GitHub pull requests. Percy will automatically set commit statuses whenever your CI service runs a build.
-
-https://github.com/marketplace/percy
+As you're setting up Percy, you will be prompted to add our GitHub app to integrate with GitHub pull requests. Once you've added the app, Percy will automatically update the pull request summary if there are visual differences waiting for review, and details of which team member approved them.
 
 ## Approval workflow
 
