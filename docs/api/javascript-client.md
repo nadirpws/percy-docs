@@ -9,9 +9,8 @@ JavaScript API client library for [Percy](https://percy.io).
 <div class="Alert Alert--warning">
   <strong>NOTE:</strong> This is a low-level API library, you probably want to use a higher-level framework plugin. Check out:
 
-* [ember-percy](/docs/clients/javascript/ember)
+[!INCLUDE /docs/-client-list-javascript]
 
-  We are looking for sponsorship for developing wrappers for Angular, React, and other JavaScript frameworks. If you are interested in this please [reach out](mailto:hello@percy.io)!
 </div>
 
 ## Contributing
