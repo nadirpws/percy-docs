@@ -12,18 +12,28 @@ This adds [Percy](https://percy.io) visual testing and review to your [**Storybo
 
 1. Add as a dev dependency: `npm i --save-dev @percy-io/react-percy-storybook`
 1. Open your **package.json**, and add a script: `"snapshot": "build-storybook && percy-storybook --widths=320,1280"`
-1. Add the following line to the end of **.storybook/config.js**:
+1. Update your **.storybook/config.js**:
 
-**Storybook v2:**
+Adjust the existing line that imports `@storybook/react`:
 
 ```javascript
-if (typeof window === 'object') window.__storybook_stories__ = require('@kadira/storybook').getStorybook();
+// On the line that imports from @storybook/react, add getStorybook and setAddon
+import { configure, getStorybook, setAddon } from '@storybook/react';
 ```
 
-**Storybook v3:**
+Add the following before you configure your stories:
 
 ```javascript
-if (typeof window === 'object') window.__storybook_stories__ = require('@storybook/react').getStorybook();
+import createPercyAddon from '@percy-io/react-percy-storybook';
+const { percyAddon, serializeStories } = createPercyAddon();
+setAddon(percyAddon);  
+```
+
+Add the following at the end of your config.js file:
+
+```javascript
+// NOTE: if you're using the Storybook options addon, call serializeStories *BEFORE* the setOptions call
+serializeStories(getStorybook);
 ```
 
 
@@ -48,7 +58,7 @@ Percy provides an `inPercy` function that you can use in your Storybook's config
 You can see an example of how this type of stabilization can be done in this  [storybook/config.js](https://github.com/percy/react-percy/blob/master/integration-tests/.storybook/config.js).
 
 
-## Options
+## Global Options
 
 These options can be appended to the percy-storybook command in the script tag in your **package.json** file:
 
@@ -58,6 +68,29 @@ These options can be appended to the percy-storybook command in the script tag i
 * **rtl** - Process all stories a second time in RTL.  eg. `--rtl`
 * **rtl_regex** - Process stories with matching names a second time in RTL. eg. `--rtl_regex=unidirectional`
 * **debug** - Provides additional debugging information. eg. `--debug`
+
+
+## Per-Story Options
+
+You can **override** options on a per-story basis by adding stories with `addWithPercyOptions` instead of `add`.  These options will trump the Global Options specified for the storybook.
+
+`addWithPercyOptions` takes 3 parameters: the story name, the percyOptions, and the story function.  If you've been calling `add` to add the story previously, simply change it to `addWithPercyOptions` and insert percyOptions as the second parameter.
+
+#### Available options:
+
+* **widths** - An array of widths as integers for this story.
+* **rtl** - A boolean value specifying whether this story should additionally be run in a RTL direction.
+
+#### Examples:
+Have a look at the storybook in [react-percy](https://github.com/percy/react-percy/tree/master/integration-tests/react-percy-storybook) for an example of how to use `.addWithPercyOptions`. including ways to use it in conjunction with other add-ons.  Here's a simple example:
+
+```javascript
+storiesOf('My basic span', module)
+  .addWithPercyOptions('with multiple widths', { widths: [222, 333], rtl: true }, () =>
+    <span>This span renders in widths of 222px and 333px</span>,
+  )
+```
+
 
 
 ## RTL Direction Support
