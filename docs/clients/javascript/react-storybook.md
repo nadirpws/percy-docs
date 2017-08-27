@@ -1,8 +1,8 @@
 # Percy for Storybook for React
-#### [react-percy on GitHub <i class="fa fa-github" aria-hidden="true"></i>](https://github.com/percy/react-percy)
+#### [percy-storybook on GitHub <i class="fa fa-github" aria-hidden="true"></i>](https://github.com/percy/percy-storybook)
 
 [![Package Status](https://img.shields.io/npm/v/@percy-io/react-percy-storybook.svg)](https://www.npmjs.com/package/@percy-io/react-percy-storybook)
-[![Build Status](https://travis-ci.org/percy/react-percy.svg?branch=master)](https://travis-ci.org/percy/react-percy)
+[![Build Status](https://travis-ci.org/percy/percy-storybook.svg?branch=master)](https://travis-ci.org/percy/percy-storybook)
 
 This adds [Percy](https://percy.io) visual testing and review to your [**Storybook for React**](https://storybook.js.org/).  If you use React without Storybook see our [React](/docs/clients/javascript/react) page.
 
@@ -55,7 +55,7 @@ It's fairly easy to stabilize these diffs. Tools like faker often allow you to p
 
 Percy provides an `inPercy` function that you can use in your Storybook's config.js if you'd prefer that these adjustments only have an effect when running in Percy's rendering environment.  Add the [@percy-io/in-percy](https://www.npmjs.com/package/@percy-io/in-percy) package if you'd like to use inPercy.
 
-You can see an example of how this type of stabilization can be done in this  [storybook/config.js](https://github.com/percy/react-percy/blob/master/integration-tests/.storybook/config.js).
+You can see an example of how this type of stabilization can be done in this  [storybook/config.js](https://github.com/percy/percy-storybook/blob/master/integration-tests/react-percy-storybook/storybook/config.js).
 
 
 ## Global Options
@@ -82,7 +82,7 @@ You can **override** options on a per-story basis by adding stories with `addWit
 * **rtl** - A boolean value specifying whether this story should additionally be run in a RTL direction.
 
 #### Examples:
-Have a look at the storybook in [react-percy](https://github.com/percy/react-percy/tree/master/integration-tests/react-percy-storybook) for an example of how to use `.addWithPercyOptions`. including ways to use it in conjunction with other add-ons.  Here's a simple example:
+Have a look at the storybook in [percy-storybook](https://github.com/percy/percy-storybook/tree/master/integration-tests/react-percy-storybook) for an example of how to use `.addWithPercyOptions`. including ways to use it in conjunction with other add-ons.  Here's a simple example:
 
 ```javascript
 storiesOf('My basic span', module)
@@ -99,7 +99,7 @@ Percy supports taking screenshots of your stories a second time in the RTL direc
 
 * To process all stories in the RTL direction, use the `--rtl` option.  To process only a subset in RTL, use the `--rtl_regex` option and provide a regex that will match the names of the stories you want to capture in RTL.
 * Stories you have selected for RTL processing will be processed twice.  Once normally, and then a second time with `[RTL]` appended to their name, and with a `direction=rtl` url param provided.
-* It's up to the stories to process the direction url param and respond appropriately.  You can see a basic example of how this can be done in our [Direction Demo test story](https://github.com/percy/react-percy/blob/master/integration-tests/stories/index.js).
+* It's up to the stories to process the direction url param and respond appropriately.  You can see a basic example of how this can be done in our [Direction Demo test story](https://github.com/percy/percy-storybook/blob/master/integration-tests/react-percy-storybook/stories/index.js).
 
 ## GitHub integration
 
@@ -122,10 +122,10 @@ Run `npm run snapshot` again, and email the output to [hello@percy.io](mailto:he
 
 ## Contributing
 
-1. Fork it ( https://github.com/percy/react-percy/fork )
+1. Fork it ( https://github.com/percy/percy-storybook/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new pull request
 
-[Throw a ★ on it!](https://github.com/percy/react-percy) :)
+[Throw a ★ on it!](https://github.com/percy/percy-storybook) :)
