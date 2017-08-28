@@ -1,6 +1,6 @@
 # Percy for React
 
-If you use **React Storybook**, please see Percy's [React Storybook](/docs/clients/javascript/react-storybook) docs.
+If you use **Storybook for React**, please see Percy's [Storybook](/docs/clients/javascript/react-storybook) docs.
 
 If you use **react-rails**, please see the [Percy for Rails](/docs/clients/ruby/capybara-rails) docs.
 

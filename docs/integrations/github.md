@@ -1,4 +1,4 @@
-# GitHub App
+# GitHub Integration
 
 As you're setting up Percy, you will be prompted to add our GitHub app to integrate with GitHub pull requests. Once you've added the app, Percy will automatically update the pull request summary if there are visual differences waiting for review, and details of which team member approved them.
 

@@ -8,13 +8,16 @@
 
 [!INCLUDE /docs/-client-list]
 
+# Integrations
+
+[!INCLUDE /docs/-integrations-list]
+
 # Tutorials
 
 [!INCLUDE /docs/-tutorials-list]
 
 # Learn
 
-* [GitHub integration](/docs/learn/github-integration)
 * [Responsive visual diffs](/docs/learn/responsive)
 * [Animations](/docs/learn/animations)
 * [Font services](/docs/learn/fonts)
