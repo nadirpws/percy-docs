@@ -136,7 +136,7 @@ Percy **automatically integrates with GitHub PRs**, so you can do visual reviews
 
 ![](https://cloud.githubusercontent.com/assets/75300/13929974/13750b2c-ef5a-11e5-9a87-3ad3b335cc0d.png)
 
-See our [GitHub integration](/docs/learn/github-integration) docs for more info.
+See our [GitHub integration](/docs/integrations/github) docs for more info.
 
 ## Troubleshooting
 

@@ -38,7 +38,7 @@ In minutes, you will have Percy's visual reviews integrated in your application:
 
 </div>
 
-See the [GitHub integration docs](/docs/learn/github-integration) for more info about Percy's review workflow.
+See the [GitHub integration docs](/docs/integrations/github) for more info about Percy's review workflow.
 
 ## Continuous visual integration introduction
 

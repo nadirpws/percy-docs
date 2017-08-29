@@ -1,7 +1,7 @@
 # Percy for Storybook for React
 #### [percy-storybook on GitHub <i class="fa fa-github" aria-hidden="true"></i>](https://github.com/percy/percy-storybook)
 
-[![Package Status](https://img.shields.io/npm/v/@percy-io/react-percy-storybook.svg)](https://www.npmjs.com/package/@percy-io/react-percy-storybook)
+[![Package Status](https://img.shields.io/npm/v/@percy-io/percy-storybook.svg)](https://www.npmjs.com/package/@percy-io/percy-storybook)
 [![Build Status](https://travis-ci.org/percy/percy-storybook.svg?branch=master)](https://travis-ci.org/percy/percy-storybook)
 
 This adds [Percy](https://percy.io) visual testing and review to your [**Storybook for React**](https://storybook.js.org/).  If you use React without Storybook see our [React](/docs/clients/javascript/react) page.
@@ -10,7 +10,7 @@ This adds [Percy](https://percy.io) visual testing and review to your [**Storybo
 
 [!INCLUDE /docs/clients/-do-setup-first]
 
-1. Add as a dev dependency: `npm i --save-dev @percy-io/react-percy-storybook`
+1. Add as a dev dependency: `npm i --save-dev @percy-io/percy-storybook`
 1. Open your **package.json**, and add a script: `"snapshot": "build-storybook && percy-storybook --widths=320,1280"`
 1. Update your **.storybook/config.js**:
 
@@ -24,7 +24,7 @@ import { configure, getStorybook, setAddon } from '@storybook/react';
 Add the following before you configure your stories:
 
 ```javascript
-import createPercyAddon from '@percy-io/react-percy-storybook';
+import createPercyAddon from '@percy-io/percy-storybook';
 const { percyAddon, serializeStories } = createPercyAddon();
 setAddon(percyAddon);  
 ```
@@ -55,7 +55,7 @@ It's fairly easy to stabilize these diffs. Tools like faker often allow you to p
 
 Percy provides an `inPercy` function that you can use in your Storybook's config.js if you'd prefer that these adjustments only have an effect when running in Percy's rendering environment.  Add the [@percy-io/in-percy](https://www.npmjs.com/package/@percy-io/in-percy) package if you'd like to use inPercy.
 
-You can see an example of how this type of stabilization can be done in this  [storybook/config.js](https://github.com/percy/percy-storybook/blob/master/integration-tests/react-percy-storybook/storybook/config.js).
+You can see an example of how this type of stabilization can be done in this  [storybook/config.js](https://github.com/percy/percy-storybook/blob/master/integration-tests/storybook-for-react/storybook/config.js).
 
 
 ## Global Options
@@ -82,7 +82,7 @@ You can **override** options on a per-story basis by adding stories with `addWit
 * **rtl** - A boolean value specifying whether this story should additionally be run in a RTL direction.
 
 #### Examples:
-Have a look at the storybook in [percy-storybook](https://github.com/percy/percy-storybook/tree/master/integration-tests/react-percy-storybook) for an example of how to use `.addWithPercyOptions`. including ways to use it in conjunction with other add-ons.  Here's a simple example:
+Have a look at the storybook in [percy-storybook](https://github.com/percy/percy-storybook/tree/master/integration-tests/storybook-for-react) for an example of how to use `.addWithPercyOptions`. including ways to use it in conjunction with other add-ons.  Here's a simple example:
 
 ```javascript
 storiesOf('My basic span', module)
@@ -99,7 +99,7 @@ Percy supports taking screenshots of your stories a second time in the RTL direc
 
 * To process all stories in the RTL direction, use the `--rtl` option.  To process only a subset in RTL, use the `--rtl_regex` option and provide a regex that will match the names of the stories you want to capture in RTL.
 * Stories you have selected for RTL processing will be processed twice.  Once normally, and then a second time with `[RTL]` appended to their name, and with a `direction=rtl` url param provided.
-* It's up to the stories to process the direction url param and respond appropriately.  You can see a basic example of how this can be done in our [Direction Demo test story](https://github.com/percy/percy-storybook/blob/master/integration-tests/react-percy-storybook/stories/index.js).
+* It's up to the stories to process the direction url param and respond appropriately.  You can see a basic example of how this can be done in our [Direction Demo test story](https://github.com/percy/percy-storybook/blob/master/integration-tests/storybook-for-react/stories/index.js).
 
 ## GitHub integration
 
@@ -107,7 +107,7 @@ Percy **automatically integrates with GitHub pull requests**, so you can do visu
 
 ![](https://cloud.githubusercontent.com/assets/75300/13929974/13750b2c-ef5a-11e5-9a87-3ad3b335cc0d.png)
 
-See our [GitHub integration](/docs/learn/github-integration) docs for more info.
+See our [GitHub integration](/docs/integrations/github) docs for more info.
 
 ## Troubleshooting
 

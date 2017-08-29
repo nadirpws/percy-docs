@@ -27,7 +27,7 @@ By default, Percy automatically picks the latest `master` build as the baseline 
 
 ### Pull requests
 
-When the [GitHub integration](/docs/learn/github-integration) is enabled and the build is from a pull request, you want to know what visual changes will be made after this request is merged. Percy uses the pull request base branch as the baseline. Specifically the baseline is the commit where the base branch stemmed from.
+When the [GitHub integration](/docs/integrations/github) is enabled and the build is from a pull request, you want to know what visual changes will be made after this request is merged. Percy uses the pull request base branch as the baseline. Specifically the baseline is the commit where the base branch stemmed from.
 
 ![](/images/docs/baseline-picking-logic/pull-created-scenario.svg)
 
