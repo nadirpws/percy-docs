@@ -28,19 +28,24 @@ yarn add --dev @percy-io/percy-webdriverio
 
 Next, update your `wdio.conf.js`:
 ```js
-  // Add the percy-webdriverio plugin
+  // At the top of the file
+  var percy = require('@percy-io/percy-webdriverio');
+
+  // In the plugins section, add the percy-webdriverio plugin.
   plugins: {
     '@percy-io/percy-webdriverio': {}
   },
 
-  // Before your tests run, instruct Percy on where to find and mount your assets.
-  before: function (capabilities, specs) {
-    browser.percyUseAssetLoader('filesystem', { buildDir: 'compiled-assets-dir', mountPath:'/assets' });
+  // Before your tests run, instruct Percy on where to find and mount your assets,
+  // and create the build that snapshots will be added to.
+  onPrepare: function (config, capabilities) {
+    var assetLoaders = [percy.assetLoader('filesystem', { buildDir: 'compiled-assets-dir', mountPath: '/assets' })];
+    percy.createBuild(assetLoaders);
   },
 
-  // After your tests have completed, finalize the Percy Build.
-  after: function (result, capabilities, specs) {
-    browser.percyFinalizeBuild();
+  // After your tests have completed, finalize the build.
+  onComplete: function(exitCode) {
+    percy.finalizeBuild();
   },
 ```
 
