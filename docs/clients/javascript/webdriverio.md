@@ -33,14 +33,18 @@ Next, update your `wdio.conf.js`:
     '@percy-io/percy-webdriverio': {}
   },
 
-  // Before your tests run, instruct Percy on where to find and mount your assets.
-  before: function (capabilities, specs) {
-    browser.percyUseAssetLoader('filesystem', { buildDir: 'compiled-assets-dir', mountPath:'/assets' });
+  // Before your tests run, instruct Percy on where to find and mount your assets, and marks the
+  // start of the build
+  onPrepare: function (config, capabilities) {
+    var percy = require('@percy-io/percy-webdriverio');
+    const assetLoaders = [percy.assetLoader('filesystem', { buildDir: 'compiled-assets-dir', mountPath: '/assets' })];
+    return percy.createBuild(assetLoaders);
   },
 
   // After your tests have completed, finalize the Percy Build.
   after: function (result, capabilities, specs) {
-    browser.percyFinalizeBuild();
+    var percy = require('@percy-io/percy-webdriverio');
+    return percy.finalizeBuild();
   },
 ```
 
