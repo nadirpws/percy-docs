@@ -40,12 +40,12 @@ Next, update your `wdio.conf.js`:
   // and create the build that snapshots will be added to.
   onPrepare: function (config, capabilities) {
     var assetLoaders = [percy.assetLoader('filesystem', { buildDir: 'compiled-assets-dir', mountPath: '/assets' })];
-    percy.createBuild(assetLoaders);
+    return percy.createBuild(assetLoaders);
   },
 
   // After your tests have completed, finalize the build.
   onComplete: function(exitCode) {
-    percy.finalizeBuild();
+    return percy.finalizeBuild();
   },
 ```
 
