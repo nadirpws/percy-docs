@@ -99,6 +99,21 @@ describeComponent(
 );
 ```
 
+## Separate build and test steps
+If you're running your ember tests with the `--path` flag to test an app pre-built with `ember build -o`, you may need to
+modify your commands to ensure the test environment is setup correctly.
+
+In your `ember build` command, use the `--environment=test` flag:
+```bash
+ember build --environment=test -o dist
+```
+
+Run your `ember test` command with the `EMBER_ENV` variable set to test:
+```bash
+EMBER_ENV=test ember test --path=dist
+```
+
+
 ## Responsive visual diff setup
 
 You can use Percy [responsive visual diffs](/docs/learn/responsive) to test at different CSS breakpoints.
