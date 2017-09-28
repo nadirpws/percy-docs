@@ -99,6 +99,12 @@ describeComponent(
 );
 ```
 
+## Freezing time and dynamic data
+
+As you start to introduce visual testing into your workflow, you might find that the passing of time or generated data from tools like [faker](https://github.com/marak/Faker.js/) can cause visual diffs.
+
+It's fairly easy to stabilize these diffs. Tools like faker often allow you to provide a [seed](https://github.com/marak/Faker.js/#setting-a-randomness-seed) to ensure that the same data is generated each time faker is run. Libraries like [ember-mockdate-shim](https://github.com/Ticketfly/ember-mockdate-shim) allow you to override the current date, eliminating variations due to the screenshots being taking at a different date and time. If you use Math.random, you can seed it with [seedrandom](https://github.com/davidbau/seedrandom).
+
 ## Separate build and test steps
 If you're running your ember tests with the `--path` flag to test an app pre-built with `ember build -o`, you may need to
 modify your commands to ensure the test environment is setup correctly.
