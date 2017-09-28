@@ -44,3 +44,13 @@ $.fx.off = true;
 </div>
 
 As the [jQuery docs](https://api.jquery.com/jquery.fx.off/) say: "When this property is set to `true` all animation methods will immediately set elements to their final state when called, rather than displaying an effect."
+
+## Manual Velocity animation handling
+
+If you are using the [Velocity](https://github.com/julianshapiro/velocity) animation accelerator, you can mock time when animating elements to disable the animation tweening entirely. This allows you to snapshot the end state of your animation. To do so, add the following to your Velocity config to disable animations:
+
+```
+$.Velocity.mock = true;
+```
+
+This will force all Velocity animations to run with 0ms duration and 0ms delay on the next animation tick. For more information on how this works, see the [Velocity documentation](http://velocityjs.org/#mock)
