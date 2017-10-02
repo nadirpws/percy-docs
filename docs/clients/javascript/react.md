@@ -5,33 +5,47 @@
 [![Package Status](https://img.shields.io/npm/v/react-percy.svg)](https://www.npmjs.com/package/react-percy)
 [![Build Status](https://travis-ci.org/percy/react-percy.svg?branch=master)](https://travis-ci.org/percy/react-percy)
 
-Visual regression testing for React components with [Percy](https://percy.io).
+Visual regression testing for React components with Percy.
+
+If you use Storybook for React, please see [Percy for Storybook](/docs/clients/javascript/react-storybook).<br>
+If you use react-rails, please see the [Percy for Rails](/docs/clients/ruby/capybara-rails).
 
 <div class="Alert Alert--warning">
-  <b>Beta release.</b> Percy for React is in beta. It may change in backwards-incompatible ways until v1.0.0 is released.
+
+**Beta release.** Percy for React is in beta. It may change in backwards-incompatible ways until v1.0.0 is released.
+
+Please submit any feedback or issues on the [GitHub issue tracker](https://github.com/percy/react-percy/issues).
+
 </div>
 
-## Getting Started
+## Setup
 
 [!INCLUDE /docs/clients/-do-setup-first]
 
-<div class="Alert Alert--warning">
-
-If you use **Storybook for React**, please see Percy's [Storybook](/docs/clients/javascript/react-storybook) docs. If you use **react-rails**, please see the [Percy for Rails](/docs/clients/ruby/capybara-rails) docs.
-
-</div>
-
-Install `@percy-io/react-percy` using `npm`:
+Install `react-percy` using `npm`:
 
 ```sh
-npm install --save-dev @percy-io/react-percy
+npm install --save-dev react-percy
 ```
 
 Or using `yarn`:
 
 ```sh
-yarn add --dev @percy-io/react-percy
+yarn add --dev react-percy
 ```
+
+
+Add the following section to your `package.json`:
+
+```json
+{
+  "scripts": {
+    "percy": "react-percy"
+  }
+}
+```
+
+## Usage
 
 Let's get started by creating a snapshot for a React component in your project. Suppose you have a `Button` component in a file called `Button.js`:
 
@@ -56,24 +70,9 @@ percySnapshot('Button', () => {
 });
 ```
 
-Add the following section to your `package.json`:
+That's it!
 
-```json
-{
-  "scripts": {
-    "percy": "react-percy"
-  }
-}
-```
-
-Finally, add `npm run percy` as a test step in CI. For example, if you use Travis CI, you would add it to `script` in `.travis.yml`:
-
-```yaml
-script:
-  - npm run percy
-```
-
-Now, whenever CI runs, a snapshot of the `Button` component will be uploaded to Percy!
+Now, whenever CI runs, a snapshot of the `Button` component will be uploaded to Percy for visual regression testing!
 
 ## ESLint Configuration
 
@@ -128,15 +127,35 @@ If you're using ESLint v4.1.0 or later, you can instead scope the `react-percy` 
 }
 ```
 
-## Advanced Configuration
+## Advanced configuration
 
-### Webpack Configuration
+### Webpack configuration
 
 The default Webpack configuration of `react-percy` will run Babel on all `.js` and `.jsx` files in your project, with support for all modern JS language features.
 
 If your project is a non-ejected `create-react-app`, we also automatically include `create-react-app` Webpack rules for CSS and image files.
 
 Otherwise, if you already have your own Webpack setup, `react-percy` will not use it by default. However, we allow you to customize our Webpack setup by creating a `percy.config.js` file in your project's root directory and including an object with any custom Webpack settings.
+
+#### Reusing webpack config
+
+If you have a particularly complex Webpack config, you may wish to simply reuse it rather than rewriting your rules and plugins in `percy.config.js`.
+
+To do so, you can import your Webpack config in `percy.config.js` and set it as the `webpack` field like so:
+
+```javascript
+import config from './webpack.config.js';
+
+export default {
+  webpack: config
+};
+```
+
+Keep in mind that we ignore the `entry` and `output` fields of your Webpack settings, so if your Webpack config has any plugins that rely on these you may encounter errors. For example, the Webpack `CommonsChunkPlugin` often refers to specific `entry` names, but as we ignore your original `entry` settings it will not be able to find them.
+
+Also remember that the `webpack` field must be a plain object; it cannot be an array or a function.
+
+#### Custom Webpack config
 
 For example, let's say you wanted to add SCSS support in your snapshots. Simply add the following to a file called `percy.config.js` in your project's root directory:
 
@@ -171,7 +190,7 @@ export default {
 };
 ```
 
-#### Supported Webpack Options
+#### Supported Webpack options
 
 There are a few things to keep in mind when customizing our Webpack configuration.
 
@@ -179,25 +198,7 @@ You can add almost any Webpack config options in `percy.config.js`, including ru
 
 Also note that the `webpack` field in `percy.config.js` must be an object. Unlike a plain `webpack.config.js` file, it cannot be a function or an array.
 
-#### Reusing Your Webpack Config
-
-If you have a particularly complex Webpack config, you may wish to simply reuse it rather than rewriting your rules and plugins in `percy.config.js`.
-
-To do so, you can import your Webpack config in `percy.config.js` and set it as the `webpack` field like so:
-
-```javascript
-import config from './webpack.config.js';
-
-export default {
-  webpack: config
-};
-```
-
-Keep in mind that we ignore the `entry` and `output` fields of your Webpack settings, so if your Webpack config has any plugins that rely on these you may encounter errors. For example, the Webpack `CommonsChunkPlugin` often refers to specific `entry` names, but as we ignore your original `entry` settings it will not be able to find them.
-
-Also remember that the `webpack` field must be a plain object; it cannot be an array or a function.
-
-### Setup Files
+#### Including entry files
 
 As noted above, `react-percy` ignores the `entry` section of your Webpack settings and instead only builds Percy snapshot files and their imports. If your original Webpack `entry` includes additional global files like `babel-polyfill` or CSS files that you want to include in all snapshots, you can include them by creating a `percy.config.js` file in your project's root directory and adding an `includeFiles` setting like so:
 
@@ -214,9 +215,9 @@ These files can be package names or relative paths to files within your project.
 
 Any packages or files listed there will be loaded before any snapshots.
 
-## Usage
+## Best practices
 
-### Percy Snapshot Files
+### Percy snapshot files
 
 `react-percy` looks for files in your project ending with `.percy.js` or `.percy.jsx`.
 
@@ -226,9 +227,11 @@ One common pattern is to add Percy snapshot files right next to the component fi
 
 Another common pattern is to keep Percy snapshots in a `__percy__` folder. For the above example, that would be `src/components/__percy__/Button.percy.js`.
 
-### Basic Snapshots
+### Basic snapshots
 
-`percySnapshot(name, fn)`
+```javascript
+percySnapshot(name, fn)
+```
 
 The first argument is the snapshot name; the second argument is a function that returns the React markup to snapshot. For example:
 
@@ -242,9 +245,11 @@ The name is what you will see when reviewing snapshots in Percy's web interface,
 
 The function may include any necessary setup, but must ultimately return the React markup to snapshot.
 
-### Testing Multiple Breakpoints
+### Testing multiple breakpoints
 
-`percySnapshot(name, options, fn)`
+```javascript
+percySnapshot(name, options, fn)
+```
 
 A powerful feature of Percy is visual regression testing for responsive designs. To take snapshots of your component at multiple breakpoints, simply specify the widths to use via the optional middle `options` argument:
 
@@ -256,7 +261,7 @@ percySnapshot('Button', { widths: [320, 768, 1024] }, () => {
 
 This will take snapshots of "Button" at widths of 320px, 768px, and 1024px.
 
-### Setup
+### Hooks
 
 In some cases while writing Percy snapshots you may have some setup work that needs to happen before snapshots run. This is often useful for setting up props that you'd like to share across multiple snapshots.
 
@@ -282,7 +287,7 @@ percySnapshot('PlayerInfo: expanded', () => {
 });
 ```
 
-### Grouping Snapshots
+### Grouping snapshots
 
 You may also group snapshots together using a `suite` block.
 
@@ -304,7 +309,7 @@ suite('Button', () => {
 });
 ```
 
-This will generate three snapshots: "Button: primary", "Button: secondary", and "Button: inverse".
+This will generate three snapshots: `Button: primary`, `Button: secondary`, and `Button: inverse`.
 
 You can also set the widths for all snapshots within a `suite` block:
 
@@ -344,7 +349,7 @@ suite('Button', { widths: [320, 768] }, () => {
 });
 ```
 
-This will generate snapshots of "Button: primary" and "Button: secondary" at 320px and 768px wide, and "Button: inverse" at 480px and 1024px wide.
+This will generate snapshots of `Button: primary` and `Button: secondary` at 320px and 768px wide, and "Button: inverse" at 480px and 1024px wide.
 
 When they are inside a `suite` block, `beforeEach` blocks only apply to the snapshots within that `suite` block:
 
@@ -402,7 +407,7 @@ suite('Button', { widths: [320, 768] }, () => {
 });
 ```
 
-This will generate 320px and 768px wide snapshots of "Button: primary", "Button: secondary", "Button: submit: enabled", and "Button: submit: disabled".
+This will generate 320px and 768px wide snapshots of `Button: primary`, `Button: secondary`, `Button: submit: enabled`, and `Button: submit: disabled`.
 
 ## Troubleshooting
 
