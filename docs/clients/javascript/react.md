@@ -2,7 +2,7 @@
 
 #### [react-percy on GitHub <i class="fa fa-github" aria-hidden="true"></i>](https://github.com/percy/react-percy)
 
-[![Package Status](https://img.shields.io/npm/v/react-percy.svg)](https://www.npmjs.com/package/react-percy)
+[![Package Status](https://img.shields.io/npm/v/@percy/react.svg)](https://www.npmjs.com/package/@percy/react)
 [![Build Status](https://travis-ci.org/percy/react-percy.svg?branch=master)](https://travis-ci.org/percy/react-percy)
 
 Visual regression testing for React components with Percy.
@@ -22,16 +22,16 @@ Please submit any feedback or issues on the [GitHub issue tracker](https://githu
 
 [!INCLUDE /docs/clients/-do-setup-first]
 
-Install `react-percy` using `npm`:
+Install `@percy/react` using `npm`:
 
 ```sh
-npm install --save-dev react-percy
+npm install --save-dev @percy/react
 ```
 
 Or using `yarn`:
 
 ```sh
-yarn add --dev react-percy
+yarn add --dev @percy/react
 ```
 
 
