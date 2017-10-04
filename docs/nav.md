@@ -20,6 +20,7 @@
 
 * [Responsive visual diffs](/docs/learn/responsive)
 * [Animations](/docs/learn/animations)
+* [Percy specific CSS](/docs/learn/percy-specific-css)
 * [Font services](/docs/learn/fonts)
 * [Baseline picking logic](/docs/learn/baseline-picking-logic)
 * [Parallel test suites](/docs/learn/parallel-tests)
