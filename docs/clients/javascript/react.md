@@ -74,6 +74,8 @@ That's it!
 
 Now, whenever CI runs, a snapshot of the `Button` component will be uploaded to Percy for visual regression testing!
 
+[!INCLUDE /docs/clients/-do-setup-first]
+
 ## ESLint Configuration
 
 If your project uses ESLint, you will want to whitelist the `react-percy` globals to avoid "percySnapshot is not defined" errors. The easiest way to do this is using `eslint-plugin-react-percy`.
