@@ -96,14 +96,6 @@ Percy::Capybara.use_loader(:filesystem, assets_dir: assets_dir, base_url: '/asse
 * `assets_dir`: absolute path to your compiled static assets (_not_ source assets).
 * `base_url`: (optional) path prefix to where your webserver serves the assets (ex: `/assets`)
 
-### Native loader (slower)
-
-The native loader attempts to load assets directly from pages rather than from an asset pipeline. Though it works in many situations, we highly recommend using filesystem loader instead as it is much faster and more comprehensively gathers assets. However, if you'd still like to use the native loader, configure it like this:
-
-```ruby
-Percy::Capybara.use_loader(:native)
-```
-
 ## Usage
 
 Now the fun part!
