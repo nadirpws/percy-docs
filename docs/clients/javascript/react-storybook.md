@@ -80,6 +80,7 @@ You can **override** options on a per-story basis by adding stories with `addWit
 
 * **widths** - An array of widths as integers for this story.
 * **rtl** - A boolean value specifying whether this story should additionally be run in a RTL direction.
+* **skip** - A boolean value specifying whether this story should be skipped (default: false).  You might want to use this for stories that use Storybook's knobs addon.
 
 #### Examples:
 Have a look at the storybook in [percy-storybook](https://github.com/percy/percy-storybook/tree/master/integration-tests/storybook-for-react) for an example of how to use `.addWithPercyOptions`. including ways to use it in conjunction with other add-ons.  Here's a simple example:
