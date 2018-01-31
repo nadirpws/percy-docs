@@ -21,7 +21,7 @@ Adjust the existing line that imports `@storybook/react`:
 import { configure, getStorybook, setAddon } from '@storybook/react';
 ```
 
-Add the following before you configure your stories:
+Still in config.js, add the following before calling `configure` to configure your stories:
 
 ```javascript
 import createPercyAddon from '@percy-io/percy-storybook';
@@ -29,7 +29,7 @@ const { percyAddon, serializeStories } = createPercyAddon();
 setAddon(percyAddon);  
 ```
 
-Add the following at the end of your config.js file:
+Finally, add the following at the end of your config.js file:
 
 ```javascript
 // NOTE: if you're using the Storybook options addon, call serializeStories *BEFORE* the setOptions call
