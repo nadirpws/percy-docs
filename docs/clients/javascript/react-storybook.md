@@ -112,6 +112,18 @@ See our [GitHub integration](/docs/integrations/github) docs for more info.
 
 ## Troubleshooting
 
+### Debugging locally
+
+If you're seeing different screenshots on Percy from what you see in Storybook locally, you'll find `build-storybook` helpful.
+
+During installation, you added the "snapshots" script command `"build-storybook && percy-storybook --widths=320,1280"`.  The first half of that, `build-storybook`, is a built-in Storybook command to convert your storybook to a set of static assets in a folder called `storybook-static`.
+
+Inside `storybook-static` you'll find an index.html file. Open index.html in your browser, and you'll see the exact storybook that Percy receives and renders screenshots from. Reviewing this locally as you make configuration changes can help with troubleshooting, and shorten the debugging cycle.  After you make changes, you can re-run build-storybook, and refresh index.html to see if you've resolved the issue.
+
+If the built storybook differs from what you see when viewing the live storybook, it may be due to a configuration issue.  Perhaps you need to supply build-storybook with the -c option to provide a different config-dir, or supply the -s option to specify a different static folder.  i.e. `"build-storybook -c my_storybook -s my_static_folder && percy-storybook --widths=320,1280"`
+
+### Storybook object not found on window.
+
 If you see an error message `Storybook object not found on window.` and followed all of the installation instructions, then please add the debug flag to the script command in your **package.json file**:
 
 ```json
