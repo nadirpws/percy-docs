@@ -92,8 +92,6 @@ storiesOf('My basic span', module)
   )
 ```
 
-
-
 ## RTL Direction Support
 
 Percy supports taking screenshots of your stories a second time in the RTL direction.
@@ -101,6 +99,10 @@ Percy supports taking screenshots of your stories a second time in the RTL direc
 * To process all stories in the RTL direction, use the `--rtl` option.  To process only a subset in RTL, use the `--rtl_regex` option and provide a regex that will match the names of the stories you want to capture in RTL.
 * Stories you have selected for RTL processing will be processed twice.  Once normally, and then a second time with `[RTL]` appended to their name, and with a `direction=rtl` url param provided.
 * It's up to the stories to process the direction url param and respond appropriately.  You can see a basic example of how this can be done in our [Direction Demo test story](https://github.com/percy/percy-storybook/blob/master/integration-tests/storybook-for-react/stories/index.js).
+
+## Percy-specific CSS
+
+If you use [Percy-specific CSS](/docs/learn/percy-specific-css) to override CSS in Percy, add the `@media only percy` code inside a style tag in your [preview-head.html](https://storybook.js.org/configurations/add-custom-head-tags/) file to ensure that it will be applied in the Percy rendering environment.
 
 ## GitHub integration
 
