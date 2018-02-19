@@ -119,6 +119,8 @@ Run your `ember test` command with the `EMBER_ENV` variable set to test:
 EMBER_ENV=test ember test --path=dist
 ```
 
+## Ember Exam
+If you use Ember Exam ([ember-exam](https://github.com/trentmwillis/ember-exam)) your Percy setup may require custom adjustments. Please email your Ember Exam configuration to [hello@percy.io](mailto:hello@percy.io), and we will advise how to get Percy running.
 
 ## Responsive visual diff setup
 
