@@ -27,7 +27,7 @@ Much better. **Percy automatically freezes CSS animations and animated GIFs.**
 
 Other than animations, Percy does other server-side tricks to create a consistent rendering environment and avoid other kinds of false-positives (such as font rendering differences, sub-pixel antialiasing, width and height changes, etc.)
 
-## Manual jQuery animation handling
+## jQuery animation handling
 
 Percy does not by default execute JavaScript in our rendering pipeline, but JavaScript is likely enabled in the browser that runs your acceptance tests locally or on CI. You might be unknowingly running jQuery animations in tests simply by using them in your app.
 
@@ -45,7 +45,25 @@ $.fx.off = true;
 
 As the [jQuery docs](https://api.jquery.com/jquery.fx.off/) say: "When this property is set to `true` all animation methods will immediately set elements to their final state when called, rather than displaying an effect."
 
-## Manual Velocity animation handling
+## Freeze Highcharts animations
+
+```js
+Highcharts.setOptions({
+  chart: {
+    animation: false
+  },
+  plotOptions: {
+    series: {
+      animation: false
+    }
+  }
+});
+```
+
+* https://api.highcharts.com/highcharts/chart.animation
+* https://api.highcharts.com/highcharts/plotOptions.series.animation
+
+## Velocity animation handling
 
 If you are using the [Velocity](https://github.com/julianshapiro/velocity) animation accelerator, you can mock time when animating elements to disable the animation tweening entirely. This allows you to snapshot the end state of your animation. To do so, add the following to your Velocity config to disable animations:
 
