@@ -5,6 +5,8 @@ Percy is designed to integrate with your tests and CI environment, but can also 
 * `PERCY_TOKEN`: The Percy repo write-only API token. This is unique for each Percy repository.
 * `PERCY_PROJECT`: The full repository slug, for example `my-org/repo-name`.
 
+When running in your local environment, we also recommend setting the `PERCY_BRANCH` environment variable to local to avoid unintentionally overwriting your project's `master` baseline in Percy.
+
 ## Local setup
 
 You can set environment variables locally using `export`:
@@ -12,6 +14,7 @@ You can set environment variables locally using `export`:
 ```bash
 $ export PERCY_TOKEN=aaabbbcccdddeeefff
 $ export PERCY_PROJECT=my-org/repo-name
+$ export PERCY_BRANCH=local
 $
 $ # Now run your tests locally (just an example, depends on client library used):
 $ npm run test
@@ -20,11 +23,10 @@ $ npm run test
 Or, all on one line:
 
 ```bash
-$ PERCY_TOKEN=aaabbbcccdddeeefff PERCY_PROJECT=my-org/repo-name npm run test
+$ PERCY_TOKEN=aaabbbcccdddeeefff PERCY_PROJECT=my-org/repo-name PERCY_BRANCH=local npm run test
 ```
 
-Careful though—if you run your tests locally, Percy cannot read the current branch information
-from the CI environment so it will default to `master` which will set your repo's `master` baseline in Percy. You can change the branch linked in Percy by setting the `PERCY_BRANCH` environment variable.
+Careful though—if you don't use `PERCY_BRANCH` when you run tests locally, and you are on the `master` branch it will set your project's `master` baseline in Percy.
 
 <div class="Alert Alert--warning">
 
