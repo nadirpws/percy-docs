@@ -39,7 +39,7 @@ $ npm test
 
 This will run the test suite and send snapshots to Percy. You can view the snapshots in Percy now if you want, but there will be no visual comparisons yet.
 
-![](/images/docs/tutorial-without-diffs.png)
+![](/images/docs/tutorial-without-diffs.jpg)
 
 **Step 6:** Use your text editor to edit `app/styles/app.css` and change the `#new-todo` background-color from `#ffffff` to `#f5f5f5`.
 
@@ -63,7 +63,7 @@ This will rerun the tests with your changes and upload new snapshots to Percy.  
 
 Percy has highlighted what's changed on the page! You can click on the highlight to reveal the underlying screenshot.
 
-![](/images/docs/tutorial-with-diffs.png)
+![](/images/docs/tutorial-with-diffs.jpg)
 
 **Finished! 😀**  
 

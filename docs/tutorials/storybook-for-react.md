@@ -40,7 +40,7 @@ $ npm run snapshot
 
 This will run storybook's build-storybook command to create a static storybook, and then send it to Percy to generate screenshots for comparison.  You can view the screenshots in Percy now if you want, but there will be no visual comparisons yet.
 
-![](/images/docs/tutorial-react-for-storybook-without-diffs.png)
+![](/images/docs/tutorial-react-for-storybook-without-diffs.jpg)
 
 **Step 5:** Use your text editor to edit `components/Footer.js` and remove line 59 that reads `{this.renderClearButton()}`.
 
@@ -64,7 +64,7 @@ This will rebuild and upload the modified storybook to Percy.  New snapshots wil
 
 Percy has highlighted what's changed in the components! Component snapshots with the largest changes are shown first, so the story with the Item Three added is shown at the top of the list. You can click on the highlight to reveal the underlying screenshot.
 
-![](/images/docs/tutorial-react-for-storybook-with-diffs.png)
+![](/images/docs/tutorial-react-for-storybook-with-diffs.jpg)
 
 If you scroll down, you'll see the other stories that were impacted by removing the 'Clear completed' button.  Finally, you'll see the unchanged snapshots grouped together at the bottom of the list.
 

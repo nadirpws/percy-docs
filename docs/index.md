@@ -24,17 +24,17 @@ Select your CI service to get started:
 
 In minutes, you will have Percy's visual reviews integrated in your application:
 
-<div style="max-width: 1000px; margin-bottom: 1em">
+<div style="max-width: 1000px; margin-bottom: 64px;">
 
-![](https://cloud.githubusercontent.com/assets/75300/13932364/ef20497a-ef64-11e5-9e07-819c57920bca.jpg)
+![](/images/docs/diff-example.jpg)
 
 </div>
 
 ## Automatic GitHub integration
 
-<div style="max-width: 1000px; margin-bottom: 1em">
+<div style="max-width: 1000px; margin-bottom: 64px;">
 
-![](https://cloud.githubusercontent.com/assets/75300/13929974/13750b2c-ef5a-11e5-9a87-3ad3b335cc0d.png)
+![](/images/docs/docs-github.png)
 
 </div>
 
