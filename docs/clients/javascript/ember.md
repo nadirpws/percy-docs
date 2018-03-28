@@ -157,7 +157,7 @@ percySnapshot('meter bar full', {breakpoints: ['desktop']});
 
 Percy **automatically integrates with GitHub PRs**, so you can do visual reviews with each PR's code review.
 
-![](https://cloud.githubusercontent.com/assets/75300/13929974/13750b2c-ef5a-11e5-9a87-3ad3b335cc0d.png)
+![](/images/docs/docs-github.jpg)
 
 See our [GitHub integration](/docs/integrations/github) docs for more info.
 

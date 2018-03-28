@@ -108,7 +108,7 @@ If you use [Percy-specific CSS](/docs/learn/percy-specific-css) to override CSS 
 
 Percy **automatically integrates with GitHub pull requests**, so you can do visual reviews with each PR's code review.
 
-![](https://cloud.githubusercontent.com/assets/75300/13929974/13750b2c-ef5a-11e5-9a87-3ad3b335cc0d.png)
+![](/images/docs/docs-github.jpg)
 
 See our [GitHub integration](/docs/integrations/github) docs for more info.
 

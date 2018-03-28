@@ -34,7 +34,7 @@ In minutes, you will have Percy's visual reviews integrated in your application:
 
 <div style="max-width: 1000px; margin-bottom: 64px;">
 
-![](/images/docs/docs-github.png)
+![](/images/docs/docs-github.jpg)
 
 </div>
 
